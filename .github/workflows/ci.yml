@@ -15,12 +15,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t mlops-task .
+        run: docker build --platform linux/amd64 -t mlops-task .
 
       - name: Run container and capture output
-        continue-on-error: true
         run: |
-          docker run --rm mlops-task > full_output.txt 2>&1 || true
+          docker run --platform linux/amd64 --rm mlops-task > full_output.txt 2>&1 || true
           echo "=== FULL OUTPUT ==="
           cat full_output.txt || echo "output file is empty"
           echo "=== END OUTPUT ==="
