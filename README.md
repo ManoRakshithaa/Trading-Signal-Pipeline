@@ -6,12 +6,12 @@ A minimal MLOps-style batch job that processes OHLCV cryptocurrency price data a
 
 ## Tech Stack
 
-- **Python 3.9** — core pipeline logic
-- **Pandas** — data loading and rolling mean computation
-- **NumPy** — deterministic seeding for reproducible runs
-- **PyYAML** — config management
-- **Docker** — containerized, one-command execution
-- **GitHub Actions** — CI pipeline that auto-builds and validates on every push
+![Python](https://img.shields.io/badge/Python_3.9-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![YAML](https://img.shields.io/badge/YAML-CB171E?style=for-the-badge&logo=yaml&logoColor=white)
 
 ## How it works
 
