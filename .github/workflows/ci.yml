@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t mlops-task .
+
+      - name: Run container and capture output
+        run: |
+          docker run --rm mlops-task > output.json
+          cat output.json
+
+      - name: Validate metrics output
+        run: |
+          python3 -c "
+          import json, sys
+          with open('output.json') as f:
+              data = json.load(f)
+          assert data['status'] == 'success', f'Expected success, got {data[\"status\"]}'
+          assert data['rows_processed'] == 9996, f'Expected 9996 rows, got {data[\"rows_processed\"]}'
+          assert 'value' in data, 'Missing signal_rate value'
+          print('All checks passed!')
+          "
