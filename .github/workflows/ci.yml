@@ -19,7 +19,9 @@ jobs:
 
       - name: Run container and capture output
         run: |
-          docker run --rm mlops-task 2>/dev/null | tail -n 1 > output.json
+          docker run --rm mlops-task > full_output.txt 2>&1
+          cat full_output.txt
+          grep "^{" full_output.txt | tail -1 > output.json
           cat output.json
 
       - name: Validate metrics output
