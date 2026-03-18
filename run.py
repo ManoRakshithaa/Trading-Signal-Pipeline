@@ -3,7 +3,7 @@ import json
 import logging
 import time
 import sys
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
@@ -80,8 +80,8 @@ def compute_signals(df: pd.DataFrame, window: int) -> pd.DataFrame:
 def run(args):
     logger = setup_logging(args.log_file)
     start_time = time.time()
-    logger.info(f"Job started at {datetime.now(UTC).isoformat()}Z")
-
+    logger.info(f"Job started at {datetime.now(timezone.utc).isoformat()}Z")
+    
     version = "unknown"
 
     try:
